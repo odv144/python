@@ -1,3 +1,4 @@
+#Pedir al usuario que ingrese el capital y el interes anual que genera una comicion bancaria, tambien pedir la cantidad de años que dejara el deposito
 capital=float(input("Ingrese el capital "))
 interes = float(input("Ingrese interes "))
 tiempo = int(input("Ingrese cantidad de años "))
