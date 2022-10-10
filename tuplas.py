@@ -68,7 +68,22 @@ posiciones múltiplos de 3, y muestre por pantalla la lista resultante."""
 #         abc.pop(x-1)
 # print(abc)
 
-#////////////////////////////////////
+# #////////////////////////////////////
+# #Ejercicio 8
+# """Escribir un programa que pida al usuario una palabra y muestre por pantalla si es un palíndromo."""
+# palabra = input("Ingrese una palabra: ")
+# palabra = list(palabra.upper())
+# pal = list(palabra)
+# pal.reverse()
+
+# if palabra == pal:
+#     print(f"La palabra es palindromo")
+# else:
+#     print("La palabra no es palindromo")
+# #////////////////////////////////////
+#ejercicio 9
+""" Escribir un programa que pida al usuario una palabra y muestre por pantalla el número de veces 
+que contiene cada vocal."""
 
 
 #////////////////////////////////////
