@@ -84,6 +84,18 @@ posiciones múltiplos de 3, y muestre por pantalla la lista resultante."""
 #ejercicio 9
 """ Escribir un programa que pida al usuario una palabra y muestre por pantalla el número de veces 
 que contiene cada vocal."""
-
-
+# frase = input("Ingrese una palabra o frase")
+# vocal = ["a", "e","i","o","u"]
+# for x in range(len(vocal)):
+#     print(f"La vocal {vocal[x]} aparece {frase.count(vocal[x])} veces") 
+#////////////////////////////////////
+#Ejercicio 10
+"""Escribir un programa que almacene los vectores (1,2,3) y (-1,0,2) en dos listas y
+muestre por pantalla su producto escalar. """
+v1 = [1,2,3]
+v2 = [-1,0,2]
+total = 0
+for x in range(len(v1)):
+    total = total + (v1[x]*v2[x])
+print(f"El valor es {total}")
 #////////////////////////////////////
