@@ -65,9 +65,14 @@
 #     palabra = input("Ingrese una palabra: ")
 #     print(palabra)
 #Solucion 2
-while True:
-    palabra = input("Ingrese una palabra: ")
-    if (palabra == "salir"):
-        break
-    print(palabra)
+# while True:
+#     palabra = input("Ingrese una palabra: ")
+#     if (palabra == "salir"):
+#         break
+#     print(palabra)
+#////////////////////////////////////////////////////////////
+var =20
+while var <= 30:
+    print(f"Tu valor es: {var}")
+    var +=2
 #////////////////////////////////////////////////////////////
