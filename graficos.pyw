@@ -1,7 +1,5 @@
-from msilib.schema import ComboBox
 from tkinter import *
-from tkinter import ttk
-
+from tkinter import ttk, messagebox, Tk
 
 #----------------frame---------------------
 def marco():
@@ -37,6 +35,30 @@ def etiqueta():
     # Label(frame,image=miImagen).grid(row=2,column=2)
 #////////////////fin funcion--etiqueta//////////////////
 
+#---------------inicio funcion--menu----------------
+def abrirArchivo(event = None):
+    print("archivo abierto")
+
+def menuPrincipal():
+    barraMenu= Menu()       #crear barra de menu
+    menuArchivo = Menu(barraMenu,tearoff=False) #creo un item de la barra
+    menuSalir = Menu(barraMenu,tearoff=False) #creo un item de la barra
+    barraMenu.add_cascade(menu=menuArchivo,label="Archivo") #agrego el item a la barra
+    img_menu_nuevo = PhotoImage(file="nuevo_archivo.png")
+    
+    menuArchivo.add_command(
+        label="Abrir", 
+        accelerator="Ctrl+A",
+        command=abrirArchivo, #agrego el item a la barra
+        image=img_menu_nuevo,
+        compound= LEFT)
+
+    barraMenu.add_cascade(menu=menuSalir,label="Salir") #agrego el item a la barra
+    raiz.config(menu=barraMenu)
+
+    
+#////////////////fin funcion--menu//////////////////
+
 #---------------inicio funcion--caja texto----------------
 def cajaTexto():
     nombre = StringVar()
@@ -49,19 +71,54 @@ def cajaTexto():
 #---------------inicio funcion--boton----------------
 def boton(dato,lblEti):
     #para que el boton pueda cambiar el valor de text del label debo acceder a su propiedad config
-   btnPrueba = Button(frame,text="Mostrar contenido",command=lambda:lblEti.config(text=dato.get()))
+   
+   btnPrueba = Button(frame,
+        text="Mostrar contenido",
+        command=lambda:lblEti.config(text=dato.get()),
+   )
 #    btnPrueba.config(padx=5,pady=5)
    btnPrueba.grid(row=1,column=1)
 #////////////////fin funcion--caja boton//////////////////
+
 #---------------inicio funcion--combobox----------------
 def listado():
     lista = StringVar()
-    cmbLista = ttk.ComboBox(frame,textvariable=lista)
-    cmbLista['values']=("Argentina","Peru","Chile")
+    cmbLista = ttk.Combobox(frame,
+            state="onlyready",
+            values=["ME","TXE-CSE","OTRA"],
+            postcommand=desplegarLista)
+
     cmbLista.grid(row=2,column=0)
-   
+    cmbLista.current(0)# selecciona una opcion 
+    values = cmbLista["values"]  #obtengo una lista de los elementos
+    #para añadir una opcion sin reemplazar hacer lo siguiente
+    values = list(cmbLista["values"])
+    cmbLista["values"]=values+["Nuevo Elemento"]
     
+    # cmbLista["values"]=[]   #remover todos los elementos de la lista
+    return cmbLista
 #////////////////fin funcion--combobox//////////////////
+def desplegarLista():       #metodo para cuando se despligue la lista ejecutar alguna accion
+    values = list(combo["values"])
+    combo["values"]= values+["Elemento 2","Elemento 3","elemento 4"]
+    #messagebox.showinfo(title="lista desplegada",message="lista abierta")
+
+def mostrarCambio(event):
+    seleccion = combo.get()
+    messagebox.showinfo(title="Valor cambiado",message=f"cambio de valor del combo{seleccion}")
+
+#---------------inicio funcion--messagebox ----------------
+def show_selection(combo):
+    seleccion = combo.get()
+    messagebox.showinfo(
+        message=f"La opcion del combo fue: {seleccion}",
+        title="Seleccion")
+#---------------inicio funcion--boton para seleccion-------------
+def boton2(combo):
+    #forma de llamar a una funcion precionando un boton
+    btnCombo= Button(frame,text="Seleccion",command=lambda:show_selection(combo))
+    btnCombo.grid(row=3,column=1)
+#-----------------------------------------------------------------------
 
 #---------------inicio programa-ventana----------------------
 raiz = Tk()                         #creo la ventana
@@ -70,11 +127,14 @@ raiz.iconbitmap("autorun.ico")      #pongo icono a la ventana
 #raiz.geometry("800x600")            #establece el tamaño de la ventana si uso frame debe quitar
 raiz.config(bg="grey")              #color de fondo de la ventana
 frame = Frame()
-
+menuPrincipal()
 marco() #llamo a la funcion para crear el frame
 lblEti = etiqueta() # funcion para crear label
 
 dato = cajaTexto()   #llamada funcion para agregar caja de texto
 boton(dato,lblEti)
-# listado()
+combo = listado()
+combo.bind("<<ComboboxSelected>>",mostrarCambio)    #metodo para llamar a la funcion cuando cambia la seleccion
+raiz.bind_all("<Control-a>",abrirArchivo)   #asocio el evento ctrl+a y llamo a la funciona abrirArchivo
+boton2(combo)
 raiz.mainloop()
