@@ -30,8 +30,10 @@ lblPantalla.config(bg="green")
 lblPantalla.config(padx=5)
 lblDato=Label(frame,text="Dato a mostrar")
 lblDato.grid(row=0,column=1)
-miImagen=PhotoImage(file="placa.jpg")
-lblImagen=Label(frame,image=miImagen).place(x=100,y=200)
-# lblImagen.grid(row=2, column=2)
+#no pude poner imagen
+# miImagen=PhotoImage(file="placa.jpg")
+# Label(frame,image=miImagen).grid(row=2,column=2)
+
+
 
 raiz.mainloop()
