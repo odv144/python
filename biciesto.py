@@ -1,4 +1,3 @@
-
 anio = int(input("Ingrese año "))
 if anio >0:
     if (anio % 4 ==0):
