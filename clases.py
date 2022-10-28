@@ -37,6 +37,7 @@ if me!=-1:
     print(f"se encontro en la posicion {me}")
 else:
     print("No se encontro")
+# creo que quedo funcionaod
 # f.mostrar_binario()
 
 # #Crear una clase persona con 4 atributos y 2 propiedades y un constructor
