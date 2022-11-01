@@ -25,8 +25,25 @@ def menu():
         print(f"Su saldo en Dolares: {datos['saldoDolar']}")
         print(f"Su saldo en Plazo Fijo: {datos['plazofijo']['monto']}")
         print("////////////////////////////////////////")
-    # if op==2:
-    #     pass
+    if op==2:
+        print("--------------DEPOSITAR DINERO------------")
+        caja = int(input(
+                """Seleccione la cuenta a la cual depositara
+                1-Pesos
+                2-Dolares
+                3-Plazo fijo"""))
+        if caja ==1:
+            print("Caja en Pesos")
+            
+        elif caja ==2:
+            print("Caja en Dolares")
+            
+        else:
+            print("Plazo fijo")
+        print(f"Su saldo en Pesos es: {datos['saldo']}")
+        print(f"Su saldo en Dolares: {datos['saldoDolar']}")
+        print(f"Su saldo en Plazo Fijo: {datos['plazofijo']['monto']}")
+        print("////////////////////////////////////////")
     # if op==3:
     #     pass
     # if op==4:
